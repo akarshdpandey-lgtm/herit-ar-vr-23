@@ -1,0 +1,6 @@
+{
+  "name": "HeritAR Travel Discovery",
+  "description": "Location-based heritage & travel discovery, personalized AI recommendations, multimodal transport fare estimates, hotel public listings, and trip budgeting.",
+  "requestFramePermissions": ["geolocation", "camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

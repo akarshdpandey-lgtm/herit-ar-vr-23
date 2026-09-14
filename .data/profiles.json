@@ -1,0 +1,23 @@
+{
+  "default-traveler": {
+    "id": "default-traveler",
+    "ageGroup": "adult",
+    "interests": [
+      "history",
+      "architecture",
+      "culture"
+    ],
+    "expertiseLevel": "enthusiast",
+    "availableTime": "half_day",
+    "mobilityNeed": "none",
+    "language": "en",
+    "budgetTier": "moderate",
+    "travelGroup": "solo",
+    "preferredTransport": "any",
+    "indoorOutdoorPref": "all",
+    "personalizationEnabled": true,
+    "onboardingCompleted": false,
+    "createdAt": "2026-09-13T12:36:22.421Z",
+    "updatedAt": "2026-09-13T12:36:22.421Z"
+  }
+}
