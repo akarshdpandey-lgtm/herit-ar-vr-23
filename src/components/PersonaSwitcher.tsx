@@ -4,6 +4,7 @@ import { Sparkles, BookOpen, Camera, Globe, Accessibility, Clock, Check } from '
 
 interface PersonaSwitcherProps {
   activePersona: PersonaType;
+  destinationName: string;
   onSelectPersona: (persona: PersonaType) => void;
 }
 
@@ -68,7 +69,7 @@ export const PERSONA_CONFIGS: Record<
   },
 };
 
-export function PersonaSwitcher({ activePersona, onSelectPersona }: PersonaSwitcherProps) {
+export function PersonaSwitcher({ activePersona, destinationName, onSelectPersona }: PersonaSwitcherProps) {
   const current = PERSONA_CONFIGS[activePersona];
   const IconComponent = current.icon;
 
@@ -87,6 +88,8 @@ export function PersonaSwitcher({ activePersona, onSelectPersona }: PersonaSwitc
         </div>
         <div className="text-xs text-stone-700 font-medium flex items-center gap-1.5">
           <span className="text-stone-700">Currently tailored for:</span>
+          <span className="font-semibold text-amber-800">{destinationName.split(',')[0]}</span>
+          <span className="text-stone-700">as</span>
           <span className="font-semibold text-stone-900 underline decoration-amber-500 decoration-2">
             {current.label}
           </span>

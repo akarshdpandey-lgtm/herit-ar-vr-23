@@ -37,9 +37,9 @@ export function NavigationTabs({ activeTab, onChangeTab, language = 'hi' }: Navi
   ];
 
   return (
-    <div className="w-full bg-white border-b border-stone-200 sticky top-0 z-30 shadow-xs">
+    <div className="sticky top-0 z-30 w-full border-b border-stone-200/80 bg-white/90 shadow-sm backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
-        <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-2">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 no-scrollbar sm:gap-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -50,8 +50,8 @@ export function NavigationTabs({ activeTab, onChangeTab, language = 'hi' }: Navi
                 onClick={() => onChangeTab(tab.id)}
                 className={`flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-stone-900 text-amber-400 shadow-xs ring-1 ring-stone-900'
-                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                    ? 'bg-stone-900 text-amber-300 shadow-lg shadow-stone-900/15 ring-1 ring-stone-900'
+                    : 'text-stone-600 hover:-translate-y-0.5 hover:bg-amber-50 hover:text-stone-900'
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-amber-400' : 'text-stone-500'}`} />

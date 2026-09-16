@@ -1,11 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Compass,
-  Headphones,
   Maximize,
   RotateCcw,
-  Volume2,
-  VolumeX,
   Sparkles,
   Info,
   Layers,
@@ -15,16 +12,49 @@ import {
   Move,
   Eye,
   CheckCircle,
-  Play,
-  Pause,
 } from 'lucide-react';
 import { VirtualTourScene, VirtualTourHotspot } from '../types';
 import { VIRTUAL_TOUR_SCENES } from '../data/virtualToursData';
 import { getAuthenticMonumentPhoto } from '../utils/monumentImages';
+import { ThreeDHeritageStudio } from './ThreeDHeritageStudio';
 
 interface VirtualTourSectionProps {
   currentMonument?: string;
   onSelectMonument?: (monumentName: string) => void;
+}
+
+const TOUR_SCENE_ALIASES: Record<string, string[]> = {
+  'Taj Mahal': ['taj mahal', 'taj'],
+  'Golden Temple': ['golden temple', 'harmandir', 'amritsar'],
+  'Konark Sun Temple': ['konark'],
+  'Kashi Vishwanath': ['kashi', 'vishwanath', 'varanasi'],
+  'Madurai Meenakshi Temple': ['meenakshi', 'madurai'],
+  'Statue of Unity': ['statue of unity', 'kevadiya'],
+  Charminar: ['charminar', 'hyderabad'],
+  'Victoria Memorial': ['victoria memorial', 'kolkata'],
+  'Qutub Minar': ['qutub', 'qutb'],
+  'Kailash Temple': ['ellora', 'kailash temple'],
+  'Jagannath Temple': ['jagannath', 'puri'],
+  Brihadeeswarar: ['brihadeeswarar', 'thanjavur'],
+  'Lotus Temple': ['lotus temple'],
+  Manali: ['manali'],
+  Goa: ['goa'],
+  'Hawa Mahal': ['hawa mahal'],
+  'Amber Fort': ['amber fort', 'amer fort'],
+};
+
+function matchesTourScene(scene: VirtualTourScene, query: string): boolean {
+  const normalizedQuery = query.toLowerCase().trim();
+  const sceneText = `${scene.monumentName} ${scene.location} ${scene.id}`.toLowerCase();
+  if (sceneText.includes(normalizedQuery) || normalizedQuery.includes(scene.monumentName.toLowerCase())) {
+    return true;
+  }
+
+  return Object.values(TOUR_SCENE_ALIASES).some((aliases) => {
+    const queryMatches = aliases.some((alias) => normalizedQuery.includes(alias));
+    const sceneMatches = aliases.some((alias) => sceneText.includes(alias));
+    return queryMatches && sceneMatches;
+  });
 }
 
 export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
@@ -37,25 +67,11 @@ export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
   useEffect(() => {
     if (!currentMonument) return;
     const query = currentMonument.toLowerCase().trim();
-    const foundIdx = VIRTUAL_TOUR_SCENES.findIndex((s) => {
-      const sName = s.monumentName.toLowerCase();
-      const sLoc = s.location.toLowerCase();
-      const sId = s.id.toLowerCase();
-      return (
-        sName.includes(query) ||
-        query.includes(sName) ||
-        sLoc.includes(query) ||
-        query.includes(sLoc) ||
-        sId.includes(query.replace(/\s+/g, '-')) ||
-        query.split(' ').some((word) => word.length > 3 && (sName.includes(word) || sLoc.includes(word)))
-      );
-    });
+    const foundIdx = VIRTUAL_TOUR_SCENES.findIndex((scene) => matchesTourScene(scene, query));
 
     if (foundIdx !== -1 && foundIdx !== activeSceneIndex) {
       setActiveSceneIndex(foundIdx);
       setActiveHotspot(VIRTUAL_TOUR_SCENES[foundIdx].hotspots[0] || null);
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      setIsPlayingAudio(false);
     }
   }, [currentMonument]);
 
@@ -70,35 +86,7 @@ export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
   const [zoomLevel, setZoomLevel] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [showWireframeScan, setShowWireframeScan] = useState(false);
-
-  // Text-to-speech audio guide
-  const toggleAudioGuide = () => {
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-
-    if (isPlayingAudio) {
-      setIsPlayingAudio(false);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(activeScene.audioGuideText);
-    utterance.rate = 0.95;
-    utterance.onend = () => setIsPlayingAudio(false);
-    utterance.onerror = () => setIsPlayingAudio(false);
-
-    setIsPlayingAudio(true);
-    window.speechSynthesis.speak(utterance);
-  };
-
-  useEffect(() => {
-    return () => {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
 
   // Mouse pan controls for 360 viewer
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -119,6 +107,11 @@ export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
 
   return (
     <div className="space-y-6">
+      <ThreeDHeritageStudio
+        currentMonument={currentMonument}
+        onSelectMonument={onSelectMonument}
+      />
+
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
         <div>
@@ -149,8 +142,6 @@ export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
                 onClick={() => {
                   setActiveSceneIndex(idx);
                   setActiveHotspot(scene.hotspots[0] || null);
-                  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                  setIsPlayingAudio(false);
                   if (onSelectMonument) onSelectMonument(shortName);
                 }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
@@ -313,27 +304,6 @@ export const VirtualTourSection: React.FC<VirtualTourSectionProps> = ({
               </button>
             </div>
 
-            {/* Audio narration button */}
-            <button
-              onClick={toggleAudioGuide}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-                isPlayingAudio
-                  ? 'bg-amber-500 text-stone-950 font-bold shadow-xs'
-                  : 'bg-amber-100 text-amber-900 hover:bg-amber-200'
-              }`}
-            >
-              {isPlayingAudio ? (
-                <>
-                  <VolumeX className="h-3.5 w-3.5" />
-                  <span>Stop 360° Audio Guide</span>
-                </>
-              ) : (
-                <>
-                  <Volume2 className="h-3.5 w-3.5" />
-                  <span>Play 360° Audio Guide</span>
-                </>
-              )}
-            </button>
           </div>
         </div>
 

@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+:root {
+	font-family: Georgia, 'Times New Roman', serif;
+	color: #29241f;
+	background: #f4f0e8;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #b58a4c #e8e0d3;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	background:
+		radial-gradient(circle at 8% 12%, rgba(213, 169, 96, 0.18), transparent 25rem),
+		radial-gradient(circle at 92% 28%, rgba(66, 103, 94, 0.11), transparent 24rem),
+		linear-gradient(135deg, #faf8f2 0%, #f3eee4 48%, #edf1eb 100%);
+}
+
+button,
+a,
+select,
+input {
+	font-family: inherit;
+}
+
+button,
+a {
+	transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+button:active,
+a:active {
+	transform: translateY(1px);
+}
+
+main > * {
+	animation: heritage-rise 520ms ease both;
+}
+
+main > *:nth-child(2) { animation-delay: 60ms; }
+main > *:nth-child(3) { animation-delay: 120ms; }
+
+@keyframes heritage-rise {
+	from { opacity: 0; transform: translateY(12px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 1ms !important;
+		transition-duration: 1ms !important;
+	}
+}

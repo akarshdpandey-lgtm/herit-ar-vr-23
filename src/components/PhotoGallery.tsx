@@ -11,6 +11,7 @@ interface PhotoGalleryProps {
 export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, destinationName }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [hasError, setHasError] = useState<Record<string, boolean>>({});
+  const explorePhotos = photos.slice(0, 1);
 
   if (!photos || photos.length === 0) {
     const fallbackPhoto = getAuthenticMonumentPhoto(destinationName);
@@ -30,7 +31,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, destinationN
     );
   }
 
-  const activePhoto = photos[selectedIndex] || photos[0];
+  const activePhoto = explorePhotos[selectedIndex] || explorePhotos[0];
   const activePhotoSrc = getAuthenticMonumentPhoto(
     activePhoto.title || destinationName,
     undefined,
@@ -43,7 +44,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, destinationN
         <div className="flex items-center gap-2">
           <Camera className="h-4 w-4 text-amber-700" />
           <h3 className="font-serif text-base font-bold text-stone-900">
-            Heritage Gallery ({photos.length})
+            Heritage Photo
           </h3>
         </div>
         <span className="flex items-center gap-1 rounded-full bg-stone-100 px-2.5 py-0.5 text-[11px] font-medium text-stone-600">
@@ -96,37 +97,6 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, destinationN
         </div>
       </div>
 
-      {/* Thumbnails row */}
-      {photos.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-          {photos.map((p, idx) => {
-            const thumbSrc = getAuthenticMonumentPhoto(
-              p.title || destinationName,
-              undefined,
-              p.thumbnailUrl || p.url
-            );
-            return (
-              <button
-                key={p.id || idx}
-                onClick={() => setSelectedIndex(idx)}
-                className={`relative h-16 w-24 shrink-0 overflow-hidden rounded-xl border-2 transition-all cursor-pointer ${
-                  selectedIndex === idx ? 'border-amber-600 ring-2 ring-amber-600/30' : 'border-transparent opacity-75 hover:opacity-100'
-                }`}
-              >
-                <img
-                  src={thumbSrc}
-                  alt={p.title}
-                  onError={(e) => {
-                    handleMonumentImageError(e, destinationName);
-                  }}
-                  referrerPolicy="no-referrer"
-                  className="h-full w-full object-cover"
-                />
-              </button>
-            );
-          })}
-        </div>
-      )}
     </div>
   );
 };

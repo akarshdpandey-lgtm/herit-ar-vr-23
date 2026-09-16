@@ -340,15 +340,25 @@ export function getAuthenticMonumentPhoto(
     currentUrl.endsWith('.svg') ||
     currentUrl.endsWith('.pdf');
 
-  // Check direct matches in registry first to GUARANTEE authentic, verified monument photos.
+  // Preserve the actual image the page already selected, as long as it structurally looks like a match
+  // to the current title. This prevents the same generic Taj Mahal fallback from overwriting every photo.
+  if (currentUrl && !isKnownBroken && !currentUrl.includes('placeholder')) {
+    const currentLower = currentUrl.toLowerCase();
+    const titleWords = cleanName
+      .replace(/[^a-z0-9]+/g, ' ')
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 8);
+
+    const matchesTitle = titleWords.some((word) => currentLower.includes(word));
+    if (matchesTitle || titleWords.length === 0) {
+      return getProxyImageUrl(currentUrl);
+    }
+  }
+
+  // Check direct matches in registry next to guarantee authentic heritage photos for unmatched names.
   for (const [key, set] of Object.entries(MONUMENT_IMAGE_REGISTRY)) {
     if (cleanName === key || cleanName.includes(key) || key.includes(cleanName)) {
-      if (currentUrl && !isKnownBroken && !currentUrl.includes('placeholder')) {
-        // If current URL is already a verified clean working URL for this key, keep it proxied
-        if (currentUrl.includes(key) || currentUrl.includes(key.split(' ')[0])) {
-          return getProxyImageUrl(currentUrl);
-        }
-      }
       return getProxyImageUrl(set.primary);
     }
   }

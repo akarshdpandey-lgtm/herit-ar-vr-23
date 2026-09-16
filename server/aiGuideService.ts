@@ -484,10 +484,13 @@ export const aiGuideService = {
         const prompt = `
 You are HeritAR's AI Heritage Guide for the destination: "${destinationName}".
 The user is currently browsing with the persona: "${personaLabels[persona]}".
+Answer entirely in the requested language code: "${language}". Do not answer in English when another language is requested.
 User question: "${question}"
 
 Provide an engaging, highly authentic, factual answer strictly tailored to this persona's style and needs.
 - Keep response under 160 words, structured with clean paragraphs or 2-3 bullet points.
+- Answer the actual user question directly; do not use a generic monument template.
+- Never invent ticket prices, queue hacks, tunnels, cooling systems, or access guarantees. Say when a fact needs official confirmation.
 - If persona is child: keep it playful, enthusiastic, and easy to grasp.
 - If persona is historian: cite primary sources (e.g. chroniclers, ASI logs, inscriptions).
 - If persona is photographer: include exact lighting times and camera settings.
@@ -496,7 +499,7 @@ Provide an engaging, highly authentic, factual answer strictly tailored to this 
 - If persona is budget_traveler: focus on time efficiency and cost savings.
 `;
         const response = await ai.models.generateContent({
-          model: 'gemini-3.8-flash',
+          model: 'gemini-2.5-flash',
           contents: prompt,
         });
 
@@ -511,21 +514,10 @@ Provide an engaging, highly authentic, factual answer strictly tailored to this 
       }
     }
 
-    // Smart persona fallback response
-    let answer = '';
-    if (persona === 'child') {
-      answer = `Great question! Did you know that ${destinationName} was built like a giant puzzle with magical stones? Workers carved each piece so tightly that even after hundreds of years, you can't slide a tiny coin between them! If you look at the top of the domes, they point right up at the stars like rockets waiting for adventure!`;
-    } else if (persona === 'historian') {
-      answer = `Historiographically, ${destinationName} represents a seminal synthesis of indigenous techniques and monumental imperial architecture. Archaeological Survey of India (ASI) excavations and court chronicles (like the Padshahnama and Ain-i-Akbari) document deep well caisson engineering, pozzolanic lime mortars, and epigraphical calligraphy calibrated mathematically for ground-level perspective distortion.`;
-    } else if (persona === 'photographer') {
-      answer = `For the absolute best shot of ${destinationName}: shoot during morning Golden Hour (06:15 - 07:10 AM) for soft side-lighting across the facade. Use f/8 for crisp architectural depth of field, ISO 100 on a 24-70mm lens. To avoid blown-out highlights on white stone, dial exposure compensation to -0.7 EV and frame through an archway for natural vignette contrast!`;
-    } else if (persona === 'japanese_tourist') {
-      answer = `日本の旅人の皆様へ。${destinationName}の建築様式と精神性は、奈良・法隆寺の五重塔や正倉院に伝わるシルクロードの美意識と深い繋がりを持っています。白大理石の静寂な空間は日本の禅寺の枯山水庭園と通じる美しさがあります。どうぞ脱靴マナーを守り、心安らぐ時間をお過ごしください。（どうぞごゆっくりお楽しみください。）`;
-    } else if (persona === 'wheelchair_user') {
-      answer = `Accessibility summary for ${destinationName}: The approach features permanent step-free ramps with a 1:16 gentle gradient and tactile paving. Dedicated battery golf carts provide free transfers from the parking plaza to the entry gate. Ground-floor exhibits, wide paved garden walkways, and Divyangjan-compliant accessible restrooms are available on site.`;
-    } else {
-      answer = `For an efficient 2-hour visit to ${destinationName}: Enter via the East Gate at opening time to bypass queues. Head directly to the central terrace (40 mins), loop the riverfront viewing gallery (20 mins), and exit along the outer gardens. Pre-book your official ASI ticket online to save time and money!`;
-    }
+    // Do not present generic monument claims as facts when the live model is unavailable.
+    const answer = language === 'hi'
+      ? `इस समय लाइव AI उत्तर उपलब्ध नहीं है। ${destinationName} के बारे में सही जानकारी देने के लिए कृपया थोड़ी देर बाद यही प्रश्न दोबारा पूछें या आधिकारिक स्थल स्रोत देखें।`
+      : `Live AI is temporarily unavailable for ${destinationName}. I am not showing a generic answer because heritage facts, ticket rules, accessibility, and local advice must be destination-specific. Please retry shortly or verify this question with the monument's official source.`;
 
     return {
       text: answer,

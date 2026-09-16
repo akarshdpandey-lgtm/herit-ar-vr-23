@@ -26,7 +26,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Taj View', 'Free WiFi', 'Pool', 'Luxury Spa', 'Fine Dining', 'Wheelchair Accessible'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Agra_Fort_in_India.jpg/640px-Agra_Fort_in_India.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
       source: 'Oberoi Hotels Public Directory & Google Hotels',
     },
     {
@@ -41,7 +41,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Kaya Kalp Spa', 'Free WiFi', 'Swimming Pool', 'Fitness Center', 'Gardens'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/640px-Taj_Mahal_%28Edited%29.jpeg',
+      photoUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
       source: 'ITC Hotels Public Tariff',
     },
     {
@@ -56,7 +56,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Rooftop Restaurant', 'Free WiFi', 'Pool', 'Room Service'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Mehtab_Bagh_Taj_Mahal_view.jpg/640px-Mehtab_Bagh_Taj_Mahal_view.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80',
       source: 'IHCL Public Catalog',
     },
     {
@@ -71,7 +71,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'check_live',
       amenities: ['Walk to Taj', 'Free Breakfast', 'Rooftop Pool', 'Free WiFi'],
       refundable: false,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/640px-Taj_Mahal_%28Edited%29.jpeg',
+      photoUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80',
       source: 'Public Travel Directory',
     }
   ],
@@ -88,7 +88,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Art Collection', 'Outdoor Pool', 'Historic Gardens', 'Free WiFi', 'Fine Dining'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Delhi_fort.jpg/640px-Delhi_fort.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
       source: 'The Imperial Official Directory',
     },
     {
@@ -103,7 +103,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Mughal Architecture', 'Kathak Performances', 'Rooftop Jama Masjid View', 'Free WiFi'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Qutub_Minar_in_Delhi_03-2016_img3.jpg/640px-Qutub_Minar_in_Delhi_03-2016_img3.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
       source: 'Haveli Dharampura Official',
     },
     {
@@ -118,7 +118,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Clean Air Filters', 'Free High-speed WiFi', 'Cafe', 'Metro Proximity'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gateway_of_India_in_Mumbai.jpg/640px-Gateway_of_India_in_Mumbai.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
       source: 'Bloomrooms Public Catalog',
     }
   ],
@@ -135,7 +135,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Historic Royal Palace', 'Peacock Gardens', 'Indoor/Outdoor Pools', 'Spa', 'Royal Butler'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hawa_Mahal_2011.jpg/640px-Hawa_Mahal_2011.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
       source: 'Taj Hotels Official Website',
     },
     {
@@ -150,7 +150,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Frescoed Courtyards', 'Pool', 'Ayurvedic Spa', 'Free WiFi', 'Heritage Walk'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hawa_Mahal_2011.jpg/640px-Hawa_Mahal_2011.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
       source: 'Samode Hotels Directory',
     },
     {
@@ -165,7 +165,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Swimming Pool', 'Rajasthani Decor', 'Restaurant', 'Free WiFi'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hawa_Mahal_2011.jpg/640px-Hawa_Mahal_2011.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80',
       source: 'Public Hotel Registry',
     }
   ],
@@ -182,7 +182,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Snow Peak View', 'Heated Outdoor Pool', 'Orchard Garden', 'Free WiFi', 'Fireplace'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Manali_City.jpg/640px-Manali_City.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
       source: 'The Himalayan Luxury Collection',
     },
     {
@@ -197,7 +197,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Beas River View', 'Trout Fishing', 'Heli-Skiing Desk', 'Spa & Wellness'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Hidimba_Devi_Temple_-_North-east_View_-_Manali_2014-05-11_2648-2649.TIF/lossy-page1-640px-Hidimba_Devi_Temple_-_North-east_View_-_Manali_2014-05-11_2648-2649.TIF.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
       source: 'Span Resorts Official Tariff',
     },
     {
@@ -212,7 +212,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Free WiFi', 'Valley View Terrace', 'In-house Restaurant', 'Free Parking'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Manali_City.jpg/640px-Manali_City.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80',
       source: 'Public Hotel Index',
     }
   ],
@@ -229,7 +229,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Arabian Sea View', 'Private Beach Access', 'Infinity Pool', 'Jiva Spa', 'Tennis Court'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BeachFun.jpg/640px-BeachFun.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80',
       source: 'IHCL Taj Hotels Official',
     },
     {
@@ -244,7 +244,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Colonial Architecture', 'Ayurvedic Treatments', 'Private Balcony', 'Free WiFi'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Basilica_of_Bom_Jesus%2C_Goa.jpg/640px-Basilica_of_Bom_Jesus%2C_Goa.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
       source: 'The Postcard Hotel Directory',
     },
     {
@@ -259,7 +259,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Portuguese Architecture', 'Ayurveda Spa', 'Free Breakfast', 'Beach Walk'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BeachFun.jpg/640px-BeachFun.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
       source: 'Public Travel Directory',
     }
   ],
@@ -276,7 +276,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Walk to Ram Janmabhoomi', 'Pure Vegetarian Dining', 'Free WiFi', 'Rooftop Terrace'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Shri_Ram_Janambhoomi_Mandir%2C_Ayodhya_Dham.jpg/640px-Shri_Ram_Janambhoomi_Mandir%2C_Ayodhya_Dham.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
       source: 'Radisson Hotels Official Portal',
     },
     {
@@ -291,7 +291,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Vegetarian Cuisine', '24/7 Front Desk', 'Free WiFi', 'Travel Desk'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Shri_Ram_Janambhoomi_Mandir%2C_Ayodhya_Dham.jpg/640px-Shri_Ram_Janambhoomi_Mandir%2C_Ayodhya_Dham.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80',
       source: 'UP Tourism Hospitality Index',
     }
   ],
@@ -308,7 +308,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Private Boat Transfer', 'Direct Ghat Access', 'Live Classical Sitar', 'Ganga Aarti View'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg/640px-Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80',
       source: 'Brij Hotels Official Portal',
     },
     {
@@ -323,7 +323,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['12 Acres of Palace Gardens', 'Swimming Pool', 'Jiva Spa', 'Free WiFi'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg/640px-Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80',
       source: 'Taj Hotels Official Directory',
     }
   ],
@@ -340,7 +340,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Outdoor Pool', 'Jiva Spa', 'Free Shuttle to Golden Temple', 'Fine Dining'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/The_Golden_Temple_of_Amritsar_2.jpg/640px-The_Golden_Temple_of_Amritsar_2.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
       source: 'Taj Hotels Official Portal',
     }
   ],
@@ -357,7 +357,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Sea View', 'Gateway of India View', 'Historic 1903 Palace', '10 Restaurants', 'Spa'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gateway_of_India_in_Mumbai.jpg/640px-Gateway_of_India_in_Mumbai.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80',
       source: 'Taj Hotels Official Website',
     }
   ],
@@ -374,7 +374,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Forum Views', 'Rooftop Terrace', 'Free WiFi', 'Bar', 'Air Conditioning'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/640px-Colosseo_2020.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1468824357306-a439d58f4c10?auto=format&fit=crop&w=1200&q=80',
       source: 'Hotel Forum Official & Google Hotels',
     },
     {
@@ -389,7 +389,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'few_left',
       amenities: ['Private Ancient Crypt Portico', 'Rooftop Garden', 'Free WiFi', 'Breakfast'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/640px-Colosseo_2020.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
       source: 'Public Hotel Directory',
     }
   ],
@@ -406,7 +406,7 @@ const KNOWN_HERITAGE_HOTELS: Record<string, Partial<HotelItem>[]> = {
       availabilityStatus: 'available',
       amenities: ['Eiffel Tower View', 'Eco-certified', 'Free WiFi', 'Bar'],
       refundable: true,
-      photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/640px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg',
+      photoUrl: 'https://images.unsplash.com/photo-1505761671935-60a3c5a7f3d7?auto=format&fit=crop&w=1200&q=80',
       source: 'Paris Tourism Hospitality Registry',
     }
   ]
@@ -443,23 +443,23 @@ export const hotelSearchService = {
       const hotelPhoto = (idx: number) => {
         const d = destName.toLowerCase();
         if (d.includes('manali') || d.includes('shimla') || d.includes('mountain') || d.includes('hill') || d.includes('snow') || d.includes('kashmir') || d.includes('kedarnath') || d.includes('rishikesh')) {
-          return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Manali_City.jpg/640px-Manali_City.jpg';
+          return 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80';
         }
         if (d.includes('goa') || d.includes('beach') || d.includes('coastal') || d.includes('sea') || d.includes('ocean')) {
-          return 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/BeachFun.jpg/640px-BeachFun.jpg';
+          return 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=80';
         }
         if (d.includes('varanasi') || d.includes('ayodhya') || d.includes('amritsar') || d.includes('temple') || d.includes('ghat')) {
-          return 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg/640px-Ahilya_Ghat_by_the_Ganges%2C_Varanasi.jpg';
+          return 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80';
         }
         if (d.includes('paris') || d.includes('france')) {
-          return 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/640px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg';
+          return 'https://images.unsplash.com/photo-1505761671935-60a3c5a7f3d7?auto=format&fit=crop&w=1200&q=80';
         }
         if (d.includes('rome') || d.includes('italy')) {
-          return 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/640px-Colosseo_2020.jpg';
+          return 'https://images.unsplash.com/photo-1468824357306-a439d58f4c10?auto=format&fit=crop&w=1200&q=80';
         }
         return idx === 0
-          ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/640px-Taj_Mahal_%28Edited%29.jpeg'
-          : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Hawa_Mahal_2011.jpg/640px-Hawa_Mahal_2011.jpg';
+          ? 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80'
+          : 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80';
       };
 
       baseList = [
@@ -531,7 +531,8 @@ export const hotelSearchService = {
         amenities: h.amenities || ['Free WiFi'],
         refundable: h.refundable ?? true,
         officialBookingUrl: googleHotelsUrl,
-        photoUrl: h.photoUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gateway_of_India_in_Mumbai.jpg/640px-Gateway_of_India_in_Mumbai.jpg',
+        bookingUrl: googleHotelsUrl,
+        photoUrl: h.photoUrl || 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
         source: h.source || 'Authorized Public Travel Search Provider',
         lastUpdated: new Date().toISOString(),
       };

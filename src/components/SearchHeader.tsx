@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, MapPin, Navigation, CloudRain, Sun, Cloud, Loader2, Sparkles } from 'lucide-react';
+import { Search, MapPin, Navigation, CloudRain, Sun, Cloud, Loader2, Sparkles, ArrowRight, Compass } from 'lucide-react';
 import { LocationItem, WeatherInfo } from '../types';
 import { SupportedLanguage, getTranslation } from '../utils/translations';
 
@@ -165,6 +165,23 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
   return (
     <div ref={containerRef} className="border-b border-stone-200/90 bg-white/70 backdrop-blur-xs py-4 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl space-y-3">
+        <div className="flex flex-col gap-3 rounded-2xl border border-stone-200/80 bg-stone-950 px-4 py-4 text-white shadow-xl shadow-stone-900/10 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-stone-950">
+              <Compass className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-300">Your heritage trail</p>
+              <h1 className="mt-1 text-xl font-bold tracking-tight sm:text-2xl">Discover the story behind the place.</h1>
+              <p className="mt-1 text-xs text-stone-300">Search a destination to unlock its people, architecture, routes, and hidden details.</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 self-start rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-stone-200 sm:self-auto">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+            Live destination intelligence
+            <ArrowRight className="h-3.5 w-3.5 text-amber-300" />
+          </div>
+        </div>
         {/* Search Bars Row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           {/* Origin Picker (Columns 1-5) */}
@@ -314,7 +331,7 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
         </div>
 
         {/* Quick Picks for Instant Exploration */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+        <div className="flex items-center gap-1.5 overflow-x-auto rounded-xl border border-stone-200/80 bg-white/70 p-2 pb-2 text-xs shadow-sm no-scrollbar">
           <span className="text-stone-700 font-medium text-[11px] shrink-0 mr-1 flex items-center gap-1">
             <Sparkles className="h-3 w-3 text-amber-600" /> Popular:
           </span>

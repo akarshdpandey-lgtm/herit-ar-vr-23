@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PersonaType } from '../types';
+import { SupportedLanguage } from '../utils/translations';
 import { PERSONA_CONFIGS } from './PersonaSwitcher';
 import { CULTURAL_GLOSSARY, GlossaryTerm } from '../utils/culturalGlossary';
 import {
@@ -21,6 +22,7 @@ import {
 interface AIGuideSectionProps {
   destinationName: string;
   activePersona: PersonaType;
+  language?: SupportedLanguage;
 }
 
 interface ChatMessage {
@@ -46,11 +48,14 @@ const HERITAGE_LANGUAGES = [
   { code: 'ar', name: 'العربية (Arabic)' },
 ];
 
-export function AIGuideSection({ destinationName, activePersona }: AIGuideSectionProps) {
+export function AIGuideSection({ destinationName, activePersona, language = 'hi' }: AIGuideSectionProps) {
   const currentPersona = PERSONA_CONFIGS[activePersona];
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
-    activePersona === 'japanese_tourist' ? 'ja' : 'hi'
+    language
   );
+  useEffect(() => {
+    setSelectedLanguage(language);
+  }, [language]);
   const [selectedGlossaryTerm, setSelectedGlossaryTerm] = useState<GlossaryTerm | null>(null);
 
   const [messages, setMessages] = useState<ChatMessage[]>([

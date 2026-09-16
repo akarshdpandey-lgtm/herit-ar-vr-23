@@ -21,6 +21,7 @@ import {
 
 interface PersonalizationSectionProps {
   activePersona: PersonaType;
+  destinationName: string;
   onSelectPersona: (persona: PersonaType) => void;
   profile: UserProfile;
   onUpdateProfile: (profile: UserProfile) => void;
@@ -46,11 +47,13 @@ interface PersonaDetail {
 
 export function PersonalizationSection({
   activePersona,
+  destinationName,
   onSelectPersona,
   profile,
   onUpdateProfile,
   onNavigateToTab,
 }: PersonalizationSectionProps) {
+  const placeName = destinationName.split(',')[0].trim() || 'this heritage site';
   const personas: PersonaDetail[] = [
     {
       id: 'child',
@@ -69,9 +72,9 @@ export function PersonalizationSection({
         'Simple, jargon-free explanations with child-safe UI interactions',
       ],
       sampleExperience: {
-        aiPrompt: 'Explain why Taj Mahal was built in simple fun words:',
+        aiPrompt: `Explain why ${placeName} was built in simple fun words:`,
         sampleOutput:
-          '🏰 Imagine a king named Shah Jahan who loved his queen Mumtaz so much that he decided to build the world’s most magical white marble castle for her! Over 20,000 royal artists and 1,000 elephants brought sparkling crystals from faraway lands!',
+          `🏰 Discover the story of ${placeName} through a fun, simple explanation with friendly characters, surprising facts, and an easy heritage adventure!`,
       },
     },
     {
@@ -113,9 +116,9 @@ export function PersonalizationSection({
         'Uncrowded secret vantage points (Mehtab Bagh sunset bank, East Gate alleyways)',
       ],
       sampleExperience: {
-        aiPrompt: 'Best frame for Taj Mahal sunset shot:',
+        aiPrompt: `Best frame for a ${placeName} photo:`,
         sampleOutput:
-          '📷 Setup at Mehtab Bagh (27.1800° N, 78.0420° E) at 17:42. Use a circular polarizer to balance river glare. Frame the ivory dome between two cypress trees for negative space balance, shoot at 50mm, f/8, 1/125s, ISO 100 with -0.7 EV exposure compensation.',
+          `📷 Get the best light at ${placeName} during golden hour. Use leading lines, a balanced horizon, and a medium focal length to capture the architecture with natural depth and detail.`,
       },
     },
     {
@@ -157,9 +160,9 @@ export function PersonalizationSection({
         'Complimentary wheelchair booth locations at ticketing gates',
       ],
       sampleExperience: {
-        aiPrompt: 'Accessible path to central mausoleum:',
+        aiPrompt: `Accessible path through ${placeName}:`,
         sampleOutput:
-          '♿ Route advisory: Enter through the VIP West Gate ramp (slope 1:14). Take the electric battery golf cart directly to the main red sandstone plinth. Dedicated wooden ramp leads to the lower circumambulatory terrace with zero step impediments. Accessible restrooms are located beside the cloakroom.',
+          `♿ Route advisory: Follow the verified step-free route through ${placeName}, using marked ramps, accessible rest areas, and staff-supported entrances where available.`,
       },
     },
     {
@@ -179,9 +182,9 @@ export function PersonalizationSection({
         'Official online QR ticket booking tips to skip 45-minute ticket counter queues',
       ],
       sampleExperience: {
-        aiPrompt: '2-hour express circuit for Taj Mahal:',
+        aiPrompt: `2-hour express circuit for ${placeName}:`,
         sampleOutput:
-          '⚡ Express 2-Hour Plan: (1) 0-25m: Fast entry via East Gate QR e-ticket; (2) 25-65m: Walk central waterway axis directly to main plinth for iconic symmetry photo; (3) 65-90m: Royal cenotaphs interior; (4) 90-120m: Riverfront Yamuna terrace view. Transport out: Shared electric auto for ₹15 to Agra Cantt.',
+          `⚡ Express 2-Hour Plan: prioritize the main entrance, the signature architectural viewpoint, one detail stop, and the closest practical exit or transit connection at ${placeName}.`,
       },
     },
   ];

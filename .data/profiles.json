@@ -1,14 +1,15 @@
 {
   "default-traveler": {
     "id": "default-traveler",
-    "ageGroup": "adult",
+    "ageGroup": "child",
     "interests": [
-      "history",
-      "architecture",
-      "culture"
+      "History",
+      "Architecture",
+      "Culture & Folklore",
+      "Photography"
     ],
     "expertiseLevel": "enthusiast",
-    "availableTime": "half_day",
+    "availableTime": "full_day",
     "mobilityNeed": "none",
     "language": "en",
     "budgetTier": "moderate",
@@ -16,8 +17,8 @@
     "preferredTransport": "any",
     "indoorOutdoorPref": "all",
     "personalizationEnabled": true,
-    "onboardingCompleted": false,
+    "onboardingCompleted": true,
     "createdAt": "2026-09-13T12:36:22.421Z",
-    "updatedAt": "2026-09-13T12:36:22.421Z"
+    "updatedAt": "2026-09-15T08:16:41.400Z"
   }
 }

@@ -64,16 +64,23 @@ export const HotelSection: React.FC<HotelSectionProps> = ({
             Rooms Available
           </span>
         );
+      case 'few_left':
       case 'few_rooms_left':
         return (
           <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
             Few Rooms Left
           </span>
         );
+      case 'sold_out':
+        return (
+          <span className="rounded-full bg-red-100 px-2 py-0.5 text-[10px] font-bold text-red-800">
+            Sold Out
+          </span>
+        );
       default:
         return (
           <span className="rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-bold text-stone-700">
-            Check Live Availability
+            Check Live Status
           </span>
         );
     }
@@ -315,7 +322,7 @@ export const HotelSection: React.FC<HotelSectionProps> = ({
             <div className="mt-4 border-t border-stone-100 pt-3 flex items-center justify-between">
               <span className="text-[10px] text-stone-700">Source: {hotel.source}</span>
               <a
-                href={hotel.bookingUrl}
+                href={hotel.bookingUrl || hotel.officialBookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 rounded-xl bg-amber-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-800 transition-colors cursor-pointer"

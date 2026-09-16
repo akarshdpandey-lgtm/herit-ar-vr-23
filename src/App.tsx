@@ -10,7 +10,6 @@ import { TripCostWidget } from './components/TripCostWidget';
 import { OnboardingModal } from './components/OnboardingModal';
 import { ItineraryGeneratorModal } from './components/ItineraryGeneratorModal';
 import { ProviderStatusModal } from './components/ProviderStatusModal';
-import { ProviderBadgeBar } from './components/ProviderBadgeBar';
 import { PersonaSwitcher } from './components/PersonaSwitcher';
 import { PersonaShowcase } from './components/PersonaShowcase';
 import { NavigationTabs } from './components/NavigationTabs';
@@ -110,7 +109,16 @@ export default function App() {
 
   // Preferences & Modals
   const [selectedCurrency, setSelectedCurrency] = useState('INR');
-  const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>('hi');
+  const [selectedLanguage, setSelectedLanguage] = useState<SupportedLanguage>(() => {
+    const savedLanguage = localStorage.getItem('heritAR-language') as SupportedLanguage | null;
+    return savedLanguage || 'hi';
+  });
+
+  const handleLanguageChange = (language: SupportedLanguage) => {
+    setSelectedLanguage(language);
+    document.documentElement.lang = language;
+    localStorage.setItem('heritAR-language', language);
+  };
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
   const [showItineraryModal, setShowItineraryModal] = useState(false);
   const [showProvidersModal, setShowProvidersModal] = useState(false);
@@ -192,7 +200,8 @@ export default function App() {
       .then((res) => res.json())
       .then((json) => {
         if (json.success && Array.isArray(json.data)) {
-          setPhotos(json.data);
+          // Explore uses one representative photo per destination; richer galleries live in Images.
+          setPhotos(json.data.slice(0, 1));
         }
       })
       .catch((e) => console.error('Photos load error', e));
@@ -466,7 +475,7 @@ export default function App() {
         selectedCurrency={selectedCurrency}
         onSelectCurrency={setSelectedCurrency}
         selectedLanguage={selectedLanguage}
-        onSelectLanguage={setSelectedLanguage}
+        onSelectLanguage={handleLanguageChange}
         onOpenProfile={() => setShowOnboardingModal(true)}
         onOpenProviders={() => setShowProvidersModal(true)}
         onOpenItinerary={() => {
@@ -474,9 +483,6 @@ export default function App() {
           if (!itinerary) handleGenerateItinerary(1);
         }}
       />
-
-      {/* Live Provider Attribution Status Bar */}
-      <ProviderBadgeBar onOpenDetails={() => setShowProvidersModal(true)} />
 
       {/* Hero Search & Live Weather Header */}
       <SearchHeader
@@ -684,6 +690,7 @@ export default function App() {
             <AIGuideSection
               destinationName={destination ? destination.name : 'Heritage Site'}
               activePersona={activePersona}
+              language={selectedLanguage}
             />
           </div>
         )}
@@ -709,6 +716,7 @@ export default function App() {
               attractions={attractions}
               selectedAttraction={selectedAttractionForGuide}
               onSelectAttraction={(att) => setSelectedAttractionForGuide(att)}
+              language={selectedLanguage}
             />
           </div>
         )}
@@ -718,6 +726,7 @@ export default function App() {
           <div className="space-y-8">
             <PersonaSwitcher
               activePersona={activePersona}
+              destinationName={destination ? destination.name : 'Heritage Site'}
               onSelectPersona={handleSelectPersona}
             />
             <PersonaShowcase
@@ -726,6 +735,7 @@ export default function App() {
             />
             <PersonalizationSection
               activePersona={activePersona}
+              destinationName={destination ? destination.name : 'Heritage Site'}
               onSelectPersona={handleSelectPersona}
               profile={profile}
               onUpdateProfile={setProfile}

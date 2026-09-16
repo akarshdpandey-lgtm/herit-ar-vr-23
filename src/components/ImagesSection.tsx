@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AttractionItem, PhotoItem } from '../types';
+import { SupportedLanguage } from '../utils/translations';
 import { getAuthenticMonumentPhoto, handleMonumentImageError } from '../utils/monumentImages';
 import {
   Image as ImageIcon,
@@ -26,6 +27,7 @@ interface ImagesSectionProps {
   attractions: AttractionItem[];
   selectedAttraction: AttractionItem | null;
   onSelectAttraction?: (attraction: AttractionItem) => void;
+  language?: SupportedLanguage;
 }
 
 interface FrameTab {
@@ -54,7 +56,19 @@ export function ImagesSection({
   attractions,
   selectedAttraction,
   onSelectAttraction,
+  language = 'hi',
 }: ImagesSectionProps) {
+  const nearbyCopy: Record<SupportedLanguage, { title: string; count: string; description: string; empty: string }> = {
+    en: { title: 'Nearby Heritage Sites', count: 'nearby sites found', description: 'Real photos and distance information for heritage attractions near', empty: 'Nearby heritage attractions are loading or none were found within 50 km.' },
+    hi: { title: 'आस-पास के विरासत स्थल', count: 'आस-पास के स्थल मिले', description: 'आस-पास के ऐतिहासिक स्थलों की असली तस्वीरें और दूरी की जानकारी:', empty: '50 किमी के अंदर आस-पास के विरासत स्थल लोड हो रहे हैं या नहीं मिले।' },
+    ja: { title: '近隣の文化遺産', count: '近隣の名所が見つかりました', description: '周辺の文化遺産の実際の写真と距離情報:', empty: '50km以内の近隣の文化遺産を読み込んでいます。' },
+    es: { title: 'Sitios patrimoniales cercanos', count: 'sitios cercanos encontrados', description: 'Fotos reales e información de distancia de los sitios cercanos a', empty: 'Cargando sitios cercanos o no se encontraron en 50 km.' },
+    fr: { title: 'Sites patrimoniaux proches', count: 'sites proches trouvés', description: 'Photos réelles et distances des sites proches de', empty: 'Chargement des sites proches ou aucun site trouvé dans un rayon de 50 km.' },
+    de: { title: 'Nahegelegene Kulturerbestätten', count: 'nahe Orte gefunden', description: 'Echte Fotos und Entfernungen der Sehenswürdigkeiten nahe', empty: 'Nahegelegene Orte werden geladen oder wurden im Umkreis von 50 km nicht gefunden.' },
+    bn: { title: 'কাছাকাছি ঐতিহ্যবাহী স্থান', count: 'কাছাকাছি স্থান পাওয়া গেছে', description: 'কাছাকাছি ঐতিহ্যবাহী স্থানের বাস্তব ছবি ও দূরত্বের তথ্য:', empty: 'কাছাকাছি স্থান লোড হচ্ছে অথবা ৫০ কিমির মধ্যে পাওয়া যায়নি।' },
+    ta: { title: 'அருகிலுள்ள பாரம்பரிய தளங்கள்', count: 'அருகிலுள்ள தளங்கள் கிடைத்தன', description: 'அருகிலுள்ள பாரம்பரிய தளங்களின் உண்மையான படங்கள் மற்றும் தூரத் தகவல்:', empty: 'அருகிலுள்ள தளங்கள் ஏற்றப்படுகின்றன அல்லது 50 கி.மீ.க்குள் எதுவும் கிடைக்கவில்லை.' },
+  };
+  const copy = nearbyCopy[language];
   // Initial default target
   const defaultSpot = selectedAttraction ? selectedAttraction.name : locationName.split(',')[0] || 'Taj Mahal';
 
@@ -476,7 +490,7 @@ export function ImagesSection({
         )}
       </div>
 
-      {/* AAS-PAAS KE SPOTS (Surrounding Nearby Heritage Sites with Real Wikipedia Images) */}
+      {/* Nearby heritage sites with real Wikimedia images */}
       <div className="bg-white rounded-2xl border border-stone-200 p-4 sm:p-5 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-100 pb-3">
           <div className="flex items-center gap-2.5">
@@ -486,14 +500,14 @@ export function ImagesSection({
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-lg sm:text-xl font-serif font-bold text-stone-900">
-                  Aas-Paas Ke Travel Spots (Nearby Attractions)
+                  {copy.title}
                 </h3>
                 <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-stone-100 text-stone-700">
-                  {nearbySpots.length} nearby sites found
+                  {nearbySpots.length} {copy.count}
                 </span>
               </div>
               <p className="text-xs text-stone-600 mt-0.5">
-                Real Wikipedia photos and distance info for all attractions around {activeSpotName}. Click any to view its full photo gallery!
+                {copy.description} {activeSpotName}. Click any to view its full photo gallery.
               </p>
             </div>
           </div>
@@ -501,7 +515,7 @@ export function ImagesSection({
 
         {nearbySpots.length === 0 ? (
           <p className="text-xs text-stone-500 py-4 italic">
-            Nearby attractions are loading or none within 50km radius.
+            {copy.empty}
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
